@@ -4,6 +4,13 @@ const secondsHand = document.querySelector('.seconds')
 
 const hands = document.querySelectorAll('.hand')
 
+const digit0 = document.querySelector('#digit-0')
+const digit1 = document.querySelector('#digit-1')
+const digit2 = document.querySelector('#digit-2')
+const digit3 = document.querySelector('#digit-3')
+
+const digits = document.querySelectorAll('.digit div')
+
 setInterval(setTime, 1000)
 
 function setTime(){
@@ -52,5 +59,30 @@ function setTime(){
     //replace the text in each digit span #d0 #d1 ...
     for(let i = 0; i < 4; i++){
         document.querySelector(`#d${i}`).innerHTML = time[i];
+
+        //if the digit is 9 the next must be 0
+        if (parseFloat(time[i]) == 9){
+            document.querySelector(`#digit-${i} .before`).innerHTML = 0;
+        }else{
+            document.querySelector(`#digit-${i} .before`).innerHTML = parseFloat(time[i]) + 1;
+        }
     }
+
+    //animations for each digit (convert in % of seconds) 59s = the end of the animation / 1s = the start of the next
+    digit0.style.transform = `translateY(${(parseFloat(time[1])*60+seconds)*100/35999}%)` //(second digit of hours * 60 + seconds)*100/3599s
+    digit1.style.transform = `translateY(${(minutes*60+seconds)*100/3599}%)`
+    digit2.style.transform = `translateY(${(parseFloat(time[3])*60+seconds)*100/599}%)`
+    digit3.style.transform = `translateY(${seconds*100/59}%)`
+
+    //stop the animation transition for when the seconds reaches 60 (0)
+    if (seconds == 0){
+         digits.forEach( digit => {
+            digit.style.transition = 'none'
+        })
+    }else if(seconds == 1){ //enable transition again at 1s
+        digits.forEach( digit => {
+            digit.style.transition = ''
+        })
+    }
+
 }

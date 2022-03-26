@@ -56,6 +56,33 @@ body{
     transform: translate(-11px, calc(-11px - -3px));
 }
 
+.hours{
+    width: 30%;
+}
+
+.hours-pointer{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 3px solid #444;
+    border-radius: 50%;
+    background-color: #fff;
+    right: -5px;
+    top: -7.5px;
+}
+
+.minutes{
+    width: 40%;
+}
+
+.seconds{
+    background-color: red;
+    height: 2px;
+    transform-origin: 20%;
+    left: 40%;
+    top: calc(50% + 1px);
+}
+
 .digit{
     font-family: korolev-compressed, sans-serif;
     font-weight: 900;
@@ -69,39 +96,28 @@ body{
     color: #dcd7c3;
 
     display: flex;
+    transform: translateY(0);
 }
 
-.digit span{
+.digit div{
+    transition: transform linear 1s;
+} 
+
+.digit div{
+    display: flex;
+    flex-direction: column;
     flex: 1 1 0px;
+}
+
+.digit div span{
     text-align: center;
     line-height: 0.75;
-    min-width: 67px;
-    transform: translateY(0px);
+    min-width: 0.4em;
 }
 
-.hours{
-    width: 30%;
-}
-
-.hours-pointer{
+.digit .before{
     position: absolute;
-    width: 15px;
-    height: 15px;
-    border: 2px solid #444;
-    border-radius: 50%;
-    background-color: #fff;
-    right: -5px;
-    top: -6px;
+    top: -100%;
 }
 
-.minutes{
-    width: 40%;
-}
 
-.seconds{
-    background-color: red;
-    height: 2px;
-    transform-origin: 20%;
-    left: 40%;
-    top: calc(50% + 2px);
-}
