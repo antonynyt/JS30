@@ -16,7 +16,7 @@ keys.forEach( key => {
 
 function playSound(key){
     let soundName = key.children[1].innerHTML.toLowerCase()
-    let audio = new Audio(`../assets/sounds/${soundName}.wav`)
+    let audio = new Audio(`assets/sounds/${soundName}.wav`)
     audio.currentTime = 0
     audio.play()
     key.classList.add('playing')
