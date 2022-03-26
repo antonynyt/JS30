@@ -80,7 +80,7 @@ body{
     height: 2px;
     transform-origin: 20%;
     left: 40%;
-    top: calc(50% + 1px);
+    top: calc(50% + 2px);
 }
 
 .digit{
@@ -91,9 +91,9 @@ body{
     overflow: hidden;
     padding: 0 10px;
 
-    font-size: 200px;
+    font-size: 400px;
     text-align: center;
-    color: #dcd7c3;
+    color: #e1dcca;
 
     display: flex;
     transform: translateY(0);
