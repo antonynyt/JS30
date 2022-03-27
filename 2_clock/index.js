@@ -17,15 +17,15 @@ function setTime(){
     const now = new Date()
 
     const seconds = now.getSeconds()
-    const secondsDegrees = 6*seconds - 90
+    const secondsDegrees = 360/60*seconds - 90
     secondsHand.style.transform = `rotate(${secondsDegrees}deg)`
 
     let minutes = now.getMinutes()
-    const minutesDegrees = 6*minutes - 90
+    const minutesDegrees = 360/60*minutes - 90
     minutesHand.style.transform = `rotate(${minutesDegrees}deg)`
 
     let hours = now.getHours()
-    const hoursDegrees = 6*hours - 90
+    const hoursDegrees = (360/12*hours)+(minutes*30/60) - 90
     hoursHand.style.transform = `rotate(${hoursDegrees}deg)`
 
      //we stop the transition when it's 59s beacause it's glitchy
@@ -33,7 +33,7 @@ function setTime(){
         hands.forEach( hand => {
             hand.style.transition = 'none'
         })
-    }else if (seconds == 1){
+    }else if(seconds != 0){
         hands.forEach( hand => {
             hand.style.transition = ''
         })
