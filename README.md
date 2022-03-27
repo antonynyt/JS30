@@ -6,3 +6,6 @@ javascript30.com challenge
 
 ## 2. Clock
 ![clock](https://github.com/antonynyt/JS30/blob/master/2_clock/Capture.png?raw=true)
+
+## 2. CSS variables + JS
+![clock](https://github.com/antonynyt/JS30/blob/master/3_css-variables/capture.png?raw=true)
