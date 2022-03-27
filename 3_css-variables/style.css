@@ -1,20 +1,10 @@
 @import url(reset.css);
 
 :root{
-    --l-border-color: #000;
-    --t-border-color: #000;
-    --r-border-color: #000;
-    --b-border-color: #000;
-    --l-border-size: 1px;
-    --t-border-size: 1px;
-    --r-border-size: 1px;
-    --b-border-size: 1px;
-    --l-border-style: solid;
-    --t-border-style: solid;
-    --r-border-style: solid;
-    --b-border-style: solid;
+    --border-color: #000;
+    --border-size: 1px;
+    --border-style: solid;
 }
-
 
 input:focus{
     outline: none;
@@ -40,11 +30,11 @@ input:focus{
 
 .controls{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: 
-        "select size  color"
-        "select style style";
+        "size  color"
+        "style style";
     gap: 12px;
 }
 
@@ -56,48 +46,6 @@ input:focus{
     box-sizing: border-box;
     width: 100%;
 }
-
-.border__select{
-    grid-area: select;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-}
-
-.select{
-    margin: auto;
-    border-radius: 3px;
-    background-color: #fff;
-    cursor: pointer;
-}
-
-.vertical-border-select{
-    height: 30px;
-    width: 6px;
-}
-
-.horizontal-border-select{
-    height: 6px;
-    width: 30px;
-}
-
-.center-border{
-    width: 12px;
-    height: 12px;
-}
-
-.border__select input{
-    display: none;
-}
-
-#left-select-input:checked ~ .left-border{background-color: rgb(23, 123, 157);}
-#top-select-input:checked ~ .top-border{background-color: rgb(23, 123, 157);}
-
-.left-border{grid-area: 2 / 1;}
-.top-border{grid-area: 1 / 2;}
-.right-border{grid-area: 2 / 3;}
-.bottom-border{grid-area: 3 / 2;}
-.center-border{grid-area: 2 / 2;}
 
 .border__size{
     display: flex;
@@ -150,7 +98,6 @@ input:focus{
     background-color: #545454;
 }
 
-
 .img__wrapper{
     display: flex;
     align-items: center;
@@ -163,8 +110,5 @@ img{
     object-fit: cover;
     height: 60%;
     width: 60%;
-    border-top: var(--t-border-size) var(--t-border-style) var(--t-border-color);
-    border-left: var(--l-border-size) var(--l-border-style) var(--l-border-color);
-    border-right: var(--r-border-size) var(--r-border-style) var(--r-border-color);
-    border-bottom: var(--b-border-size) var(--b-border-style) var(--b-border-color);
+    border: var(--border-size) var(--border-style) var(--border-color);
 }
