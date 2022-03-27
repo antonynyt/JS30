@@ -16,16 +16,18 @@ input:focus{
     position: absolute;
     background-color: #1a1a1a;
     color: #fff;
-    padding: 25px;
     border-radius: 10px;
-    cursor: grab;
 
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 400;
+    z-index: 1;
 }
 
-.border__control h3{
+
+#header{
+    padding: 25px 25px 0;
     margin-bottom: 20px;
+    cursor: move;
 }
 
 .controls{
@@ -36,6 +38,7 @@ input:focus{
         "size  color"
         "style style";
     gap: 12px;
+    padding: 0 25px 25px;
 }
 
 .option{
