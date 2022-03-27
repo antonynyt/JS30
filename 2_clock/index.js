@@ -58,14 +58,34 @@ function setTime(){
 
     //replace the text in each digit span #d0 #d1 ...
     for(let i = 0; i < 4; i++){
-        document.querySelector(`#d${i}`).innerHTML = time[i];
+        document.querySelector(`#d${i}`).innerHTML = time[i]
+        document.querySelector(`#digit-${i} .before`).innerHTML = parseFloat(time[i]) + 1
+    }
 
-        //if the digit is 9 the next must be 0
-        if (parseFloat(time[i]) == 9){
-            document.querySelector(`#digit-${i} .before`).innerHTML = 0;
-        }else{
-            document.querySelector(`#digit-${i} .before`).innerHTML = parseFloat(time[i]) + 1;
-        }
+    //if it's 20h the next number cant be 31h
+    if (parseFloat(time[0]) == 2){
+        document.querySelector(`#digit-0 .before`).innerHTML = 0
+    }
+    
+    //if it's 09h next is 10h
+    if (parseFloat(time[1]) == 9){
+        document.querySelector(`#digit-1 .before`).innerHTML = 0
+    }
+
+    //if it's 00h59 after 5 is 0 for 01h00
+    if (parseFloat(time[2]) == 5){
+        document.querySelector(`#digit-2 .before`).innerHTML = 0
+    }
+    
+    //if it's 00h09 next is 01h10
+    if (parseFloat(time[3]) == 9){
+        document.querySelector(`#digit-3 .before`).innerHTML = 0
+    }
+    
+    //if it's 23h next is 00h
+    if (hours == 23) {
+        document.querySelector(`#digit-0 .before`).innerHTML = 0
+        document.querySelector(`#digit-1 .before`).innerHTML = 0
     }
 
     //animations for each digit (convert in % of seconds) 59s = the end of the animation / 1s = the start of the next
