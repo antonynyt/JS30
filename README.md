@@ -12,3 +12,6 @@ javascript30.com challenge
 
 ## 4. JS arrays
 ![clock](https://github.com/antonynyt/JS30/blob/master/4_array-cardio-1/capture.png?raw=true)
+
+## 5. Flexbox image gallery
+![clock](https://github.com/antonynyt/JS30/blob/master/5_flex-img-gallery/capture.png?raw=true)
