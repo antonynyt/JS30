@@ -31,7 +31,9 @@ body{
     text-align: center;
     flex-direction: column;
     position: relative;
-    transition: all cubic-bezier(0, 1.21, 0.33, 0.98) 1.5s;
+    transition: all cubic-bezier(0, 0, 0.2, 1) 0.5s;
+
+    cursor: pointer;
 }
 
 .gallery__panel img{
@@ -50,7 +52,8 @@ body{
     flex: 1 0 auto;
     justify-content: center;
     align-items: center;
-    transition: all ease 1s;
+    /* transition: all ease 0.5s; */
+    transition: font-size ease 0.5s, transform ease 0.5s 0.3s;
 }
 
 .gallery__panel p:nth-child(3){
