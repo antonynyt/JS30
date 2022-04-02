@@ -21,3 +21,6 @@ javascript30.com challenge
 
 ## 7. JS arrays 2
 ![Array2](https://github.com/antonynyt/JS30/blob/master/7_array-cardio-2/capture.png?raw=true)
+
+## 8. HTML5 Canvas
+![Array2](https://github.com/antonynyt/JS30/blob/master/8_html-canvas/capture.png?raw=true)
