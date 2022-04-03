@@ -18,28 +18,69 @@
     }
 
     // Regular
+    console.log('hellllloooo')
 
     // Interpolated
+    const year = 35
+
+    console.log('I am %s years old', year);
+    console.log(`I am ${year} years old`);
 
     // Styled
+    console.log('%cI am styled.', 'font-size:30px; color:red');
 
     // warning!
+    console.warn('be carful')
 
     // Error :|
+    console.error('this is wrong')
 
     // Info
+    console.info('We are the 3rd of April')
 
     // Testing
+    console.assert(1 > 3, 'This is false')
 
     // clearing
+    // console.clear()
 
     // Viewing DOM Elements
+    const paragraph = document.querySelector('p')
+    console.dir(paragraph)
 
     // Grouping together
+    dogs.forEach(dog => {
+        console.groupCollapsed(dog.name)
+            console.log(`Hi I'm ${dog.name} !`)
+            console.log(`${dog.name} is ${dog.age} years old`)
+        console.groupEnd()
+    })
 
     // counting
+    console.count('Steven')
+    console.count('Steven')
+    console.count('Steven')
+    
+    console.count('Count')
+    console.count('Count')
+    
+    console.count('Steven')
 
     // timing
+
+    const endpoint = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json"
+    console.time('fetching')
+    console.timeLog('fetching')
+
+    fetch(endpoint)
+        .then(data => data.json())
+        .then(data =>{
+            console.timeEnd('fetching')
+            console.log(data)
+    })
+
+    console.table(dogs)
+    console.log('We show that in the same time we fetch the data')
 
   </script>
 </body>
