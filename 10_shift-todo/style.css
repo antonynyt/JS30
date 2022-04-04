@@ -84,6 +84,7 @@ ul.task__list{
     width: 100%;
     height: 1px;
     background: #ccc;
+    transition: all .2s ease;
     animation-name: strike;
     animation-duration: 0.2s;
     animation-timing-function: linear;
