@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id=todo>
+        <h1>Tasks</h1>
+        <ul class="task__list">
+            <li class="task__el">
+                <input type="checkbox" class="checkbox">
+                <p class="task__text" contenteditable="true"><span>Buy 1 Chicken</span></p>
+            </li>
+            <li class="task__el">
+                <input type="checkbox" class="checkbox">
+                <p class="task__text" contenteditable="true">Put socks on</p>
+            </li>
+            <li class="task__el">
+                <input type="checkbox" class="checkbox">
+                <p class="task__text" contenteditable="true">Drink water</p>
+            </li>
+            <li class="task__el">
+                <input type="checkbox" class="checkbox">
+                <p class="task__text" contenteditable="true">Stand up straight</p>
+            </li>
+            <li class="task__el">
+                <input type="checkbox" class="checkbox">
+                <p class="task__text" contenteditable="true">Multiple select hold shift</p>
+            </li>
+            <li class="task__el">
+                <input type="checkbox" class="checkbox">
+                <p class="task__text" contenteditable="true">Last ToDo</p>
+            </li>
+        </ul>
+        <div class="btnContainer">
+            <button id="task__add-btn">New Task</button>
+            <button id="task__clear-btn">Clear</button>
+        </div>
+    </div>
+    <script src="todo.js"></script>
+</body>
+</html>
