@@ -77,6 +77,10 @@ function addTodo(){
 const addBtn = document.querySelector('#task__add-btn')
 addBtn.addEventListener('click', addTodo)
 
+//addeventlistener on every todo
+deleteBtn.forEach(bin => {
+    bin.addEventListener('click', removeTodo)
+})
 
 //remove an element
 function removeTodo(e){
