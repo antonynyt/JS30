@@ -1,7 +1,14 @@
-const taskList = document.querySelector('.task__list')
-let checkboxes = document.querySelectorAll('.checkbox')
-let deleteBtn = document.querySelectorAll('.task__delete')
+//TODO
 
+// - Add LocalStorage
+// - Better HTML structure for text input (return is accepted)
+// - Add Animation on the bin SVG
+// - Add draggable to change the list order
+
+
+let checkboxes = document.querySelectorAll('.checkbox')
+let deleteBtn = document.querySelectorAll('.task__delete-btn')
+let todoList = {}
 
 //hold shift to check multiple tasks
 let lastChecked
@@ -44,6 +51,7 @@ checkboxes.forEach(checkbox => {
 
 //add a new todo to the list
 function addTodo(){
+    const taskList = document.querySelector('.task__list')
     const task = document.createElement('li')
     task.classList.add('task__el')
 
@@ -56,7 +64,7 @@ function addTodo(){
     text.classList.add('task__text')
 
     const taskDelete = document.createElement('span')
-    taskDelete.classList.add('task__delete')
+    taskDelete.classList.add('task__delete-btn')
 
     taskList.append(task)
     task.append(checkbox)
@@ -65,7 +73,7 @@ function addTodo(){
 
     text.focus()
     checkboxes = document.querySelectorAll('.checkbox')
-    deleteBtn = document.querySelectorAll('.task__delete')
+    deleteBtn = document.querySelectorAll('.task__delete-btn')
 
 
     //update the remove node each time a element list is created
@@ -90,3 +98,12 @@ function removeTodo(e){
         element.remove()
     })
 }
+
+//remove all elements
+const clearBtn = document.querySelector('#task__clear-btn')
+clearBtn.addEventListener('click', () => {
+    const tasks = document.querySelectorAll('.task__el')
+    tasks.forEach(task => {
+        task.remove()
+    })
+})
