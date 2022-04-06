@@ -66,6 +66,7 @@ function addTodo(e){
 
     const text = document.createElement('input')
     text.setAttribute('type', 'text')
+    text.setAttribute('placeholder', 'Untitled')
     text.classList.add('task__text')
 
     const taskDelete = document.createElement('span')

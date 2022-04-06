@@ -82,6 +82,10 @@ ul.task__list{
     flex-grow: 1;
 }
 
+.task__text::placeholder{
+    color: #ccc;
+}
+
 .checkbox:checked{
     background: no-repeat center/51% url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="white" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>') #5eba8a;
     border-color: #5eba8a;
@@ -103,16 +107,13 @@ ul.task__list{
     box-shadow: 0 0 0 2px rgb(94 186 138 / 20%);
 }
 
-.checkbox:checked + .task__text{
-    color: #ccc;
-}
-
 .checkbox:not(:checked):hover{
-    background-color: #ddd;
+    background-color: rgb(0 0 0 / 5%);
 }
 
 .checkbox:checked + .task__text{
     text-decoration: line-through;
+    color: #ccc;
 }
 
 /*background grey when checkbox checked*/
