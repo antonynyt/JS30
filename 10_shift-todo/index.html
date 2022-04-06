@@ -10,27 +10,32 @@
 </head>
 <body>
     <div id=todo>
-        <h1>Tasks</h1>
+        <h1>Week</h1>
         <ul class="task__list">
-            <li class="task__el">
+            <li class="task__el" draggable="true">
                 <input type="checkbox" class="checkbox">
-                <p class="task__text" contenteditable="true">Buy 1 Chicken</p>
+                <input class="task__text" type="text" value="Add Local Storage">
+                <span class="task__delete-btn"></span>
+            </li>
+            <li class="task__el checked">
+                <input type="checkbox" class="checkbox" checked>
+                <input class="task__text" type="text" value="Better HTML structure for input"/>
+                <span class="task__delete-btn"></span>
+            </li>
+            <li class="task__el checked">
+                <input type="checkbox" class="checkbox" checked>
+                <input class="task__text" type="text" value="Add animation SVG delete"/>
                 <span class="task__delete-btn"></span>
             </li>
             <li class="task__el">
                 <input type="checkbox" class="checkbox">
-                <p class="task__text" contenteditable="true">Put socks on</p>
-                <span class="task__delete-btn"></span>
-            </li>
-            <li class="task__el">
-                <input type="checkbox" class="checkbox">
-                <p class="task__text" contenteditable="true">Drink water</p>
+                <input class="task__text" type="text" value="Add draggable order list"/>
                 <span class="task__delete-btn"></span>
             </li>
         </ul>
-        <div class="btnContainer">
-            <button id="task__add-btn">New Task</button>
-            <button id="task__clear-btn">Clear</button>
+        <div class="task__add" role="button">
+            <svg width="24" height="24" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" fill="CurrentColor" clip-rule="evenodd"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
+            New task
         </div>
     </div>
 </body>

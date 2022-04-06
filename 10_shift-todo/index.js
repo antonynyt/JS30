@@ -8,11 +8,19 @@
 
 let checkboxes = document.querySelectorAll('.checkbox')
 let deleteBtn = document.querySelectorAll('.task__delete-btn')
+let taskEl = document.querySelectorAll('.task__el')
 let todoList = {}
 
 //hold shift to check multiple tasks
 let lastChecked
 function handleCheck(e){
+    this.style.animationPlayState = 'running'
+    if(this.checked){
+        this.parentNode.classList.add('checked')
+    }else{
+        this.parentNode.classList.remove('checked')
+    }
+
     let inBetween = false
 
     //check all if shift is checked
@@ -24,6 +32,7 @@ function handleCheck(e){
 
             if(inBetween){
                 checkbox.checked = true
+                checkbox.parentNode.classList.add('checked')
             }
         })
     }
@@ -37,6 +46,7 @@ function handleCheck(e){
 
             if(inBetween){
                 checkbox.checked = false
+                checkbox.parentNode.classList.remove('checked')
             }
         })
     }
@@ -50,7 +60,9 @@ checkboxes.forEach(checkbox => {
 
 
 //add a new todo to the list
-function addTodo(){
+function addTodo(e){
+    e.preventDefault()
+
     const taskList = document.querySelector('.task__list')
     const task = document.createElement('li')
     task.classList.add('task__el')
@@ -59,8 +71,8 @@ function addTodo(){
     checkbox.setAttribute('type', 'checkbox')
     checkbox.classList.add('checkbox')
 
-    const text = document.createElement('p')
-    text.setAttribute('contenteditable', 'true')
+    const text = document.createElement('input')
+    text.setAttribute('type', 'text')
     text.classList.add('task__text')
 
     const taskDelete = document.createElement('span')
@@ -72,8 +84,11 @@ function addTodo(){
     task.append(taskDelete)
 
     text.focus()
+
+    //update queryselector nodes
     checkboxes = document.querySelectorAll('.checkbox')
     deleteBtn = document.querySelectorAll('.task__delete-btn')
+    taskEl = document.querySelectorAll('.task__el')
 
 
     //update the remove node each time a element list is created
@@ -82,7 +97,7 @@ function addTodo(){
     })
 }
 
-const addBtn = document.querySelector('#task__add-btn')
+const addBtn = document.querySelector('.task__add')
 addBtn.addEventListener('click', addTodo)
 
 //addeventlistener on every todo
@@ -98,12 +113,3 @@ function removeTodo(e){
         element.remove()
     })
 }
-
-//remove all elements
-const clearBtn = document.querySelector('#task__clear-btn')
-clearBtn.addEventListener('click', () => {
-    const tasks = document.querySelectorAll('.task__el')
-    tasks.forEach(task => {
-        task.remove()
-    })
-})
