@@ -15,11 +15,6 @@ let todoList = {}
 let lastChecked
 function handleCheck(e){
     this.style.animationPlayState = 'running'
-    if(this.checked){
-        this.parentNode.classList.add('checked')
-    }else{
-        this.parentNode.classList.remove('checked')
-    }
 
     let inBetween = false
 
@@ -32,7 +27,6 @@ function handleCheck(e){
 
             if(inBetween){
                 checkbox.checked = true
-                checkbox.parentNode.classList.add('checked')
             }
         })
     }
@@ -46,7 +40,6 @@ function handleCheck(e){
 
             if(inBetween){
                 checkbox.checked = false
-                checkbox.parentNode.classList.remove('checked')
             }
         })
     }
