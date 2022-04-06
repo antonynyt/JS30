@@ -28,5 +28,5 @@ javascript30.com challenge
 ## 9. Console/devtools tricks
 Learned about `console.warn()`, `console.error()`, `console.info()`, `console.assert(condition?, the error return)` which checks if a condition is true and throw an error if false, `console.dir()` to show the DOM list of an element. `console.group()`, `console.groupEnd()`, `console.count()` and `console.time()`.
 
-## 10. HTML5 Canvas
-![todo](https://github.com/antonynyt/JS30/blob/master/10_shift-todo/capture1.png?raw=true)
+## 10. TODO LIST
+![todo](https://github.com/antonynyt/JS30/blob/master/10_shift-todo/capture2.png?raw=true)
