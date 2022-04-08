@@ -114,7 +114,7 @@ body {
     width: 50%;
     background: rgb(221, 61, 61);
     flex: 0;
-    flex-basis: 50%;
+    flex-basis: 0%;
 }
 
 /* .player__button.volume svg, .player__button.playbackrate svg, .player__button.toggle svg{
