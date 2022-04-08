@@ -111,6 +111,7 @@ skipButtons.forEach(btn => btn.addEventListener('click', skip))
 volumeBtn.addEventListener('click', toggleMute)
 ranges.forEach(range => range.addEventListener('input', handleRangeUpdate))
 fullscreen.addEventListener('click', toogleFullscreen)
+video.addEventListener('dblclick', toogleFullscreen)
 
 window.addEventListener('keydown', e => {
     e.preventDefault()
