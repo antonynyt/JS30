@@ -17,6 +17,7 @@ const volumeBtn = player.querySelector('.player__button.volume')
 const ranges = player.querySelectorAll('.player__slider')
 const statusDiv = player.querySelector('.status')
 const fullscreen = player.querySelector('.fullscreen')
+const playerControls = player.querySelector('.player__controls')
 
 function togglePlay() {
     if(video.paused){
@@ -131,19 +132,27 @@ progress.addEventListener('mousedown', e => mouseDown = true)
 progress.addEventListener('mouseup', e => mouseDown = false)
 progress.addEventListener('mouseleave', e => mouseDown = false)
 
+const timeInterval = 6000
+let hideInterval = setInterval(handleHideControls, timeInterval)
 
-window.setInterval(handleHideControls, 6000)
     
 function handleHideControls (){
-
-    const playerControls = player.querySelector('.player__controls')
-    player.style.cursor = 'none'
-    playerControls.style.transform = 'translateY(100%) translateY(-5px)'
+    if(playerControls.matches(':hover')){
+        clearInterval(hideInterval)
+        hideInterval = setInterval(handleHideControls, timeInterval)
+        return false
+    }else{
+        player.style.cursor = 'none'
+        playerControls.style.transform = 'translateY(100%) translateY(-5px)'
+    }
     player.addEventListener('mousemove', () => {
+        clearInterval(hideInterval)
+        hideInterval = setInterval(handleHideControls, timeInterval)
         player.style.cursor = null
         playerControls.style.transform = null
     })
 }
+
 
 //change the controls color based on the video content
 

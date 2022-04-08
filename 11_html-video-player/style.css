@@ -146,7 +146,7 @@ body {
     height: 5px;
     transition: height 0.3s;
     background: rgba(0,0,0,0.5);
-    cursor: ew-resize;
+    cursor: pointer;
     margin-bottom: 10px;
 }
 
@@ -164,6 +164,21 @@ body {
 .player__slider.volume, .player__slider.playbackrate{
     flex-grow: 0;
     width: 100px;
+}
+
+
+.player__slider.volume{
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.player__slider.volume:hover{
+    opacity: 1;
+}
+.player__button.volume:hover + .player__slider.volume{
+    opacity: 1;
+}
+.player__button.volume, .player__slider.volume{
+    margin: 0;
 }
 
 .player__button.playbackrate{
