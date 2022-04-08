@@ -21,6 +21,7 @@ const fullscreen = player.querySelector('.fullscreen')
 function togglePlay() {
     if(video.paused){
         video.play()
+        init()
     }else{
         video.pause()
     }
@@ -134,7 +135,7 @@ progress.addEventListener('mouseleave', e => mouseDown = false)
 window.setInterval(handleHideControls, 6000)
     
 function handleHideControls (){
-    
+
     const playerControls = player.querySelector('.player__controls')
     player.style.cursor = 'none'
     playerControls.style.transform = 'translateY(100%) translateY(-5px)'
@@ -144,3 +145,44 @@ function handleHideControls (){
     })
 }
 
+//change the controls color based on the video content
+
+video.crossOrigin = "Anonymous";
+
+const colorCanvas = document.getElementById('video-color')
+const ctx = colorCanvas.getContext('2d')
+
+function init(){
+    colorCanvas.width = video.offsetWidth/2
+    colorCanvas.height = video.offsetHeight/2
+    controlsColor()
+}
+
+function controlsColor(){
+    if(video.paused || video.ended){
+        return false;
+    }
+
+    ctx.drawImage(video, 0, 0, video.offsetWidth/2, video.offsetHeight/2)
+    const frameData = ctx.getImageData(0, 0, video.offsetWidth/2, video.offsetHeight/2).data
+    const frameDataLength = (frameData.length /4) /4
+
+    let pixelCount = 0
+    let rgbSums = [0, 0, 0]
+    for(let i = 0; i < frameDataLength; i += 4){
+        rgbSums[0] += frameData[i*4]
+        rgbSums[1] += frameData[i*4+1]
+        rgbSums[2] += frameData[i*4+2]
+        pixelCount++
+    }
+    
+    // Average the rgb sums to get the average color of the frame in rgb
+    rgbSums[0] = Math.floor(rgbSums[0]/pixelCount)
+    rgbSums[1] = Math.floor(rgbSums[1]/pixelCount)
+    rgbSums[2] = Math.floor(rgbSums[2]/pixelCount)
+    
+    // Set the background color to the new color
+    let newRgb = 'rgb(' + rgbSums.join(',') + ')'
+    document.documentElement.style.setProperty('--mainColor', newRgb)
+    setTimeout(controlsColor, 100);
+}
