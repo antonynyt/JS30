@@ -36,9 +36,11 @@ body {
     align-items: center;
     justify-content: center;
     opacity: 0;
-    transition: all 10s;
-    animation: status 2s;
-    animation-play-state: paused;
+    transition: all 1s;
+}
+
+.visible{
+    opacity: 1;
 }
 
 .player .status svg{

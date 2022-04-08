@@ -9,7 +9,9 @@ const progress = player.querySelector('.progress')
 const progressBar = player.querySelector('.progress__filled')
 const playToggle = player.querySelector('.toggle')
 const skipButtons = player.querySelectorAll('[data-skip]')
+const volumeBtn = player.querySelector('.player__button.volume')
 const ranges = player.querySelectorAll('.player__slider')
+const statusDiv = player.querySelector('.status')
 
 function togglePlay() {
     if(video.paused){
@@ -34,6 +36,21 @@ function handleRangeUpdate(){
     video[this.name] = this.value
 }
 
+let lastVolumeValue
+function toggleMute(){
+    const volumeSlider = document.querySelector('.player__slider.volume')
+    
+    if(volumeSlider.value === '0'){
+        console.log(lastVolumeValue)
+        volumeSlider.value = lastVolumeValue
+        video.volume = lastVolumeValue
+    }else{
+        lastVolumeValue = volumeSlider.value
+        volumeSlider.value = 0
+        video.volume = 0
+    }
+}
+
 function handleProgress(){
     const percent = (video.currentTime / video.duration) * 100
     progressBar.style.flexBasis = `${percent}%`
@@ -47,23 +64,15 @@ function changeProgress(e){
 }
 
 function showStatus(icon){
-
-    if(document.querySelector('.status')){
-        document.querySelectorAll('.status').forEach(div => {
-            div.style.opacity = "0.3"
-            div.addEventListener('transitionend', div.remove())
-        })
-    }
-
-    const statusDiv = document.createElement('div')
-    statusDiv.classList.add('status')
-    player.prepend(statusDiv)
     
     statusDiv.innerHTML = icon
-
-    void statusDiv.opacity
-    statusDiv.style.animationPlayState = 'running'
-    statusDiv.addEventListener('animationend', e => statusDiv.remove())
+    statusDiv.style.transition = 'all 0.2s'
+    statusDiv.classList.add('visible')
+    statusDiv.addEventListener('transitionend', e => {
+        statusDiv.style.transition = "opacity 2s ease 1s"
+        statusDiv.classList.remove('visible')
+    })
+    
 }
 
 
@@ -73,6 +82,7 @@ video.addEventListener('pause', updatePlayBtn)
 video.addEventListener('timeupdate', handleProgress)
 playToggle.addEventListener('click', togglePlay)
 skipButtons.forEach(btn => btn.addEventListener('click', skip))
+volumeBtn.addEventListener('click', toggleMute)
 ranges.forEach(range => range.addEventListener('change', handleRangeUpdate))
 ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate))
 
@@ -81,8 +91,10 @@ window.addEventListener('keydown', e => {
 
     if (e.key === 'ArrowRight'){
         video.currentTime += 10
+        showStatus(skipForwardIcon)
     }else if (e.key === 'ArrowLeft'){
         video.currentTime -= 10
+        showStatus(skipBackwardIcon)
     }else if (e.key === ' '){
         togglePlay()
     }
