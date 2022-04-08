@@ -4,6 +4,8 @@ const skipForwardIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" heig
 const skipBackwardIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="27.5" viewBox="0 0 24 27.5"><path d="M0.5,11.9l2,0.5c-1.1,3.5-0.3,7.4,2.4,10.1c3.9,3.9,10.2,3.9,14.1,0s3.9-10.2,0-14.1c-1.9-1.9-4.5-2.9-7.1-2.9V9L6.1,4.4L12,0v3.5c3.1,0,6.1,1.2,8.5,3.5c4.7,4.7,4.7,12.3,0,17c-4.7,4.7-12.3,4.7-17,0C0.3,20.7-0.7,16.1,0.5,11.9z"/><path d="M9.6,20v-9H8c0,1.2-0.6,1.5-2.3,1.5V14h1.9V20H9.6z"/><path d="M14.4,10.9c-2.5,0-3.8,1.8-3.8,4.6c0,2.8,1.3,4.6,3.8,4.6c2.5,0,3.8-1.8,3.8-4.6C18.3,12.7,16.9,10.9,14.4,10.9zM14.4,18.5c-1.2,0-1.8-1.1-1.8-3s0.5-3,1.8-3c1.2,0,1.8,1.1,1.8,3S15.7,18.5,14.4,18.5z"/></svg>'
 const EnterFullscreenIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 9h-2v-4h-4v-2h6v6zm-6 12v-2h4v-4h2v6h-6zm-18-6h2v4h4v2h-6v-6zm6-12v2h-4v4h-2v-6h6z"/></svg>'
 const ExitFullscreenIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M18 3h2v4h4v2h-6v-6zm6 12v2h-4v4h-2v-6h6zm-18 6h-2v-4h-4v-2h6v6zm-6-12v-2h4v-4h2v6h-6z"/></svg>'
+const SoundIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 17h-5v-10h5v10zm2-10v10l9 5v-20l-9 5zm11.008 2.093c.742.743 1.2 1.77 1.198 2.903-.002 1.133-.462 2.158-1.205 2.9l1.219 1.223c1.057-1.053 1.712-2.511 1.715-4.121.002-1.611-.648-3.068-1.702-4.125l-1.225 1.22zm2.142-2.135c1.288 1.292 2.082 3.073 2.079 5.041s-.804 3.75-2.096 5.039l1.25 1.254c1.612-1.608 2.613-3.834 2.616-6.291.005-2.457-.986-4.681-2.595-6.293l-1.254 1.25z"/></svg>'
+const muteIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 17h-5v-10h5v10zm2-10v10l9 5v-20l-9 5zm15.324 4.993l1.646-1.659-1.324-1.324-1.651 1.67-1.665-1.648-1.316 1.318 1.67 1.657-1.65 1.669 1.318 1.317 1.658-1.672 1.666 1.653 1.324-1.325-1.676-1.656z"/></svg>'
 
 const player = document.querySelector('.player')
 const video = player.querySelector('.viewer')
@@ -35,8 +37,16 @@ function skip(){
     showStatus(this.innerHTML)
 }
 
-function handleRangeUpdate(){
-    video[this.name] = this.value
+function handleRangeUpdate(el){
+    if (el.target){el = el.target}
+
+    video[el.name] = el.value
+    el.style.backgroundSize = `${(el.value - el.min) * 100 / (el.max - el.min)}% 100%`
+    if(el.name == 'volume' && el.value === '0'){
+        volumeBtn.innerHTML = muteIcon
+    }else if (el.name === 'volume' && el.value > 0){
+        volumeBtn.innerHTML = SoundIcon
+    }
 }
 
 let lastVolumeValue
@@ -44,13 +54,14 @@ function toggleMute(){
     const volumeSlider = document.querySelector('.player__slider.volume')
     
     if(volumeSlider.value === '0'){
-        console.log(lastVolumeValue)
         volumeSlider.value = lastVolumeValue
         video.volume = lastVolumeValue
+        handleRangeUpdate(volumeSlider)
     }else{
         lastVolumeValue = volumeSlider.value
         volumeSlider.value = 0
         video.volume = 0
+        handleRangeUpdate(volumeSlider)
     }
 }
 
@@ -96,8 +107,7 @@ video.addEventListener('timeupdate', handleProgress)
 playToggle.addEventListener('click', togglePlay)
 skipButtons.forEach(btn => btn.addEventListener('click', skip))
 volumeBtn.addEventListener('click', toggleMute)
-ranges.forEach(range => range.addEventListener('change', handleRangeUpdate))
-ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate))
+ranges.forEach(range => range.addEventListener('input', handleRangeUpdate))
 fullscreen.addEventListener('click', toogleFullscreen)
 
 window.addEventListener('keydown', e => {
