@@ -129,3 +129,18 @@ progress.addEventListener('mousemove', (e) => mouseDown && changeProgress(e))
 progress.addEventListener('mousedown', e => mouseDown = true)
 progress.addEventListener('mouseup', e => mouseDown = false)
 progress.addEventListener('mouseleave', e => mouseDown = false)
+
+
+window.setInterval(handleHideControls, 6000)
+    
+function handleHideControls (){
+    
+    const playerControls = player.querySelector('.player__controls')
+    player.style.cursor = 'none'
+    playerControls.style.transform = 'translateY(100%) translateY(-5px)'
+    player.addEventListener('mousemove', () => {
+        player.style.cursor = null
+        playerControls.style.transform = null
+    })
+}
+
