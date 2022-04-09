@@ -59,11 +59,13 @@ function toggleMute(){
         volumeSlider.value = lastVolumeValue
         video.volume = lastVolumeValue
         handleRangeUpdate(volumeSlider)
+        showStatus(SoundIcon)
     }else{
         lastVolumeValue = volumeSlider.value
         volumeSlider.value = 0
         video.volume = 0
         handleRangeUpdate(volumeSlider)
+        showStatus(muteIcon)
     }
 }
 
@@ -124,6 +126,10 @@ window.addEventListener('keydown', e => {
         showStatus(skipBackwardIcon)
     }else if (e.key === ' '){
         togglePlay()
+    }else if (e.key === 'm'){
+        toggleMute()
+    }else if (e.key === 'f'){
+        toogleFullscreen()
     }
 })
 
