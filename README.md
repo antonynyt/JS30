@@ -32,4 +32,7 @@ Learned about `console.warn()`, `console.error()`, `console.info()`, `console.as
 ![todo](https://github.com/antonynyt/JS30/blob/master/10_shift-todo/capture2.png?raw=true)
 
 ## 11. HTML5 Video Player
-![todo](https://github.com/antonynyt/JS30/blob/master/11_html-video-player/capture.png?raw=true)
+![html5video](https://github.com/antonynyt/JS30/blob/master/11_html-video-player/capture.png?raw=true)
+
+## 12. Konami Code
+![konami code](https://github.com/antonynyt/JS30/blob/master/12_key-sequence/capture.png?raw=true)
