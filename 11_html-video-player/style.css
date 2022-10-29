@@ -1,5 +1,5 @@
 :root{
-    --mainColor: rgb(194, 59, 59);
+    --mainColor: 255, 255, 255;
 }
 
 html {
@@ -22,12 +22,44 @@ body {
 }
 
 .player {
-    width: 80%;
+    width: 60%;
     max-width: 90%;
     position: relative;
     font-size: 0;
     overflow: hidden;
     border-radius: 5px;
+    box-shadow: 0 0 500px 20px rgba(var(--mainColor),0.5);
+    transition: box-shadow 2s;
+}
+
+.choose__file{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+#file-btn{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+#file-btn + label{
+    font-family: Helvetica, Arial, sans-serif;
+    color: #000;
+    font-size: 15px;
+    padding: 10px 20px;
+    background-color: #fff;
+    cursor: pointer;
 }
 
 .status{
@@ -101,7 +133,7 @@ body {
 }
 
 .player__button:focus {
-    border-color: var(--mainColor);
+    border-color: rgb(var(--mainColor));
 }
 
 .player__slider {
@@ -152,7 +184,7 @@ body {
 
 .progress__filled {
     width: 50%;
-    background: var(--mainColor);
+    background: rgb(var(--mainColor));
     flex: 0;
     flex-basis: 0%;
 }
@@ -198,7 +230,7 @@ input[type=range] {
     margin: 0 5px;
     height: 5px;
     border-radius: 5px;
-    background-image: linear-gradient(var(--mainColor),var(--mainColor));
+    background-image: linear-gradient(rgb(var(--mainColor)),rgb(var(--mainColor)));
     background-size: 70% 100%;
     background-repeat: no-repeat;
 }
@@ -224,7 +256,7 @@ input[type=range]::-webkit-slider-thumb {
     height: 15px;
     width: 15px;
     border-radius: 50px;
-    background: var(--mainColor);
+    background: rgb(var(--mainColor));
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -5px;
